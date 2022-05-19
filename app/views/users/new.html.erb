@@ -23,6 +23,17 @@
   <%#= submit_tag("Submit") %>
 <%# end %>
 
+<% if @user.errors.any? %>
+  <div id="error_explanation" style="color:red;">
+    <p><strong><%= pluralize(@user.errors.count, "error") %></strong> prohibited this user from being saved:</p>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with model: @user do |form| %>
     <%= form.label "Username"%>
     <%= form.text_field :username, placeholder: "anyperson123"%>

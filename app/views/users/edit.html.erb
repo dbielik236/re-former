@@ -11,28 +11,15 @@
 </form> 
 --> 
 
-<%= form_tag("/users/:id/edit", method: "get") do %>
-  <%= label_tag(:username, "Username:") %>
-  <%= text_field_tag(:username) %>
+<%= form_with model: @user do |form| %>
+    <%= form.label "Username"%>
+    <%= form.text_field :username, placeholder: "anyperson123"%>
 
-  <%= label_tag(:email, "Email:") %>
-  <%= text_field_tag(:email) %>
+    <%= form.label "Email"%>
+    <%= form.email_field :email, placeholder: "aperson123@gmail.com" %>
 
-  <%= label_tag(:password, "Password:") %>
-  <%= text_field_tag(:password) %>
-  
-  <%= submit_tag("Submit") %>
-<% end %>
+    <%= form.label "Password"%>
+    <%= form.password_field :password, value: "SuperSecurePassword"  %>
 
-<%#= form_with model: @user do |form| %>
-    <%#= form.label "Username"%>
-    <%#= form.text_field :username, placeholder: "anyperson123"%>
-
-    <%#= form.label "Email"%>
-    <%#= form.email_field :email, placeholder: "aperson123@gmail.com" %>
-
-    <%#= form.label "Password"%>
-    <%#= form.password_field :password, value: "SuperSecurePassword"  %>
-
-    <%#= form.submit "Submit" %>
-  <%# end %>
+    <%= form.submit "Update" %>
+  <% end %>
